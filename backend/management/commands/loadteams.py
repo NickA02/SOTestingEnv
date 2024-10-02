@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from django.utils.crypto import get_random_string
+from utils.passwords import save_teams_from_csv
 import polars as pl
 import datetime as dt
 
@@ -24,5 +25,10 @@ class Command(BaseCommand):
         user_table = pl.read_csv(file)
         if not user_table:
             self.stdout.write("Error -- File not found.")
+
+        if save_teams_from_csv(user_table):
+            self.stdout.write(f"Saved to file {file}")
+        else:
+            self.stdout.write(f"Error -- See logs for more detail")
 
         self.stdout.write(user_table)
