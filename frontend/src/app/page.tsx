@@ -8,24 +8,9 @@ const LoginPage = () => {
   function handleClick(): void {
     alert("send email and password to backend");
   }
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const formErrors = validateForm();
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
-    } else {
-      setErrors({});
-      console.log("Login attempted with:", { email, password });
-      // Here you would typically send a request to your server
-    }
-  };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePasswordChange = (e) => {
-    setEmail(e.target.value);
-  };
+  const handleEmailChange = () => {};
+  const handlePasswordChange = () => {};
   return (
     <div className="flex flex-col items-center min-h-screen pt-12 bg-[#fef7ff] text-[#000000] font-sans">
       <div className="flex flex-col items-center justify-center text-[64px] font-extrabold">
